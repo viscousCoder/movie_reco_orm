@@ -68,7 +68,7 @@ const DataList: React.FC<DataListProps> = ({ data }) => {
   return (
     <Container sx={{ maxWidth: "1500px !important" }}>
       <Grid2
-        // container
+        container
         spacing={2}
         display={"flex"}
         justifyContent={"center"}
@@ -89,11 +89,11 @@ const DataList: React.FC<DataListProps> = ({ data }) => {
         {data?.map((item) => (
           <Grid2
             key={item.id}
-            size={{ xs: 12, sm: 6, md: 4 }}
+            size={{ xs: 12, sm: 6, md: 4, lg: 4 }}
             onClick={
               item.id ? () => handleShow(item) : () => handlePeople(item)
             }
-            component="div"
+            // component="div"
           >
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
