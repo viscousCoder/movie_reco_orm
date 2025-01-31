@@ -1,0 +1,12 @@
+/backend/.env
+/backend/node_modules
+/backend/package-lock.json
+/backend/database/schema.js
+
+/moviegraph/.env
+/moviegraph/node_modules
+/moviegraph/package-lock.json
+/TrendingMovie.tsx
+
+/backend
+/moviegraph
