@@ -62,6 +62,7 @@
 require("reflect-metadata");
 const express = require("express");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 const cors = require("cors");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
@@ -71,7 +72,7 @@ const typeorm = require("typeorm");
 const path = require("path");
 const { dataSource } = require("./database/database.js");
 
-const PORT = 6999;
+const PORT = process.env.CUSTOMHOSTEDPORT || 6999;
 
 async function startApolloServer() {
   const app = express();
