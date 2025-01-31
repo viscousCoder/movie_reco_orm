@@ -65,11 +65,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
-const { graphQLSchema } = require("./schema/graphqlSchema");
-const { graphQLResolver } = require("./resolver/graphQLResolver");
+const { graphQLSchema } = require("./schema/graphqlSchema.js");
+const { graphQLResolver } = require("./resolver/graphQLResolver.js");
 const typeorm = require("typeorm");
 const path = require("path");
-const { dataSource } = require("./database/database");
+const { dataSource } = require("./database/database.js");
 
 const PORT = 6999;
 
