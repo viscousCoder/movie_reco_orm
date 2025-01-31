@@ -1,4 +1,4 @@
-const graphQLSchema = `#graphql
+export const graphQLSchema = `#graphql
 type AllTrending{
     id:ID,
     title:String,
@@ -91,4 +91,4 @@ type Query{
 }
 `;
 
-module.exports = { graphQLSchema };
+// module.exports = { graphQLSchema };

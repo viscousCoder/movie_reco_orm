@@ -5,20 +5,31 @@
 // import { dataSource } from "../database/database";
 
 // const { dataSource } = require("../database/database");
-const Alltrending = require("../entity/Alltrending");
-const CompanyDetails = require("../entity/CompanyDetails");
-const Details = require("../entity/Details");
-const Genre = require("../entity/Genre");
-const Language = require("../entity/Language");
-const { dataSource } = require("../database/database");
-const Review = require("../entity/Review");
+// const Alltrending = require("../entity/Alltrending");
+// const CompanyDetails = require("../entity/CompanyDetails");
+// const Details = require("../entity/Details");
+// const Genre = require("../entity/Genre");
+// const Language = require("../entity/Language");
+// const { dataSource } = require("../database/database");
+// const Review = require("../entity/Review");
+
+import { dataSource } from "../database/database.js";
+import Alltrending from "../entity/Alltrending.js";
+import Cast from "../entity/Cast.js";
+import CompanyDetails from "../entity/CompanyDetails.js";
+import Credit from "../entity/Credit.js";
+import Crew from "../entity/Crew.js";
+import Details from "../entity/Details.js";
+import Genre from "../entity/Genre.js";
+import Language from "../entity/Language.js";
+import Review from "../entity/Review.js";
 
 /**
  * @function it is used to insert the data(trending,movie,tv,smiliar,recommended) to the table
  * @param it take array of objects, in which some details about the movie or tv show are stored
  * @working before inserting new data into the db it firstly delete the previous one and then insert the new one.
  */
-const insertTrendingData = async (data) => {
+export const insertTrendingData = async (data) => {
   try {
     const trendingRepo = dataSource.getRepository(Alltrending);
     await trendingRepo.clear();
@@ -34,7 +45,7 @@ const insertTrendingData = async (data) => {
  * @working before inserting new data into the db it first delete the previous one and then insert the new one.
  */
 
-const insertDetailsData = async (data) => {
+export const insertDetailsData = async (data) => {
   const detailsRepo = dataSource.getRepository(Details);
   const companyRepo = dataSource.getRepository(CompanyDetails);
   const genreRepo = dataSource.getRepository(Genre);
@@ -125,7 +136,7 @@ const insertDetailsData = async (data) => {
  * @working before inserting new data into the db it first delete the previous one and then insert the new one.
  */
 
-const insertReviews = async (type, id, reviews) => {
+export const insertReviews = async (type, id, reviews) => {
   const reviewRepo = dataSource.getRepository(Review);
   try {
     await reviewRepo.delete({ reference_id: id });
@@ -161,10 +172,10 @@ const insertReviews = async (type, id, reviews) => {
  * @working before inserting new data into the db it first delete the previous one and then insert the new one.
  */
 
-const insertCreditData = async (creditId, castArray, crewArray) => {
-  const creditRepository = dataSource.getRepository("Credits");
-  const castRepository = dataSource.getRepository("Casts");
-  const crewRepository = dataSource.getRepository("Crew");
+export const insertCreditData = async (creditId, castArray, crewArray) => {
+  const creditRepository = dataSource.getRepository(Credit);
+  const castRepository = dataSource.getRepository(Cast);
+  const crewRepository = dataSource.getRepository(Crew);
 
   try {
     await creditRepository.query("BEGIN");
@@ -202,11 +213,11 @@ const insertCreditData = async (creditId, castArray, crewArray) => {
   }
 };
 
-module.exports = { insertCreditData };
+// module.exports = { insertCreditData };
 
-module.exports = {
-  insertTrendingData,
-  insertDetailsData,
-  insertReviews,
-  insertCreditData,
-};
+// module.exports = {
+//   insertTrendingData,
+//   insertDetailsData,
+//   insertReviews,
+//   insertCreditData,
+// };

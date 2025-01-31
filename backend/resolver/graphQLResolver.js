@@ -1,11 +1,41 @@
-const {
+// const {
+//   insertTrendingData,
+//   insertDetailsData,
+//   insertReviews,
+//   insertCredits,
+//   insertCreditData,
+// } = require("../addingToDatabase/allfunction");
+// const {
+//   trendingMoviesShows,
+//   trendingMovies,
+//   tredingTvShows,
+//   getMovieShowDetails,
+//   getCreditDetails,
+//   getRecommendedMovieData,
+//   getSimilarMovieData,
+//   getRecommendedTvData,
+//   getSimilarTvData,
+//   getReviewData,
+//   getSearchbarData,
+// } = require("../CallApi/callingApi");
+// const {
+//   fetchAllTrendingData,
+//   fetchDetailsData,
+//   getReviewsFromDb,
+//   getReviews,
+//   // getCredits,
+//   getCreditData,
+// } = require("../gettingFromDatabase/gettingFromDb");
+
+import {
   insertTrendingData,
   insertDetailsData,
   insertReviews,
-  insertCredits,
+  // insertCredits,
   insertCreditData,
-} = require("../addingToDatabase/allfunction");
-const {
+} from "../addingToDatabase/allfunction.js";
+
+import {
   trendingMoviesShows,
   trendingMovies,
   tredingTvShows,
@@ -17,17 +47,18 @@ const {
   getSimilarTvData,
   getReviewData,
   getSearchbarData,
-} = require("../CallApi/callingApi");
-const {
+} from "../CallApi/callingApi.js";
+
+import {
   fetchAllTrendingData,
   fetchDetailsData,
-  getReviewsFromDb,
+  // getReviewsFromDb,
   getReviews,
   // getCredits,
   getCreditData,
-} = require("../gettingFromDatabase/gettingFromDb");
+} from "../gettingFromDatabase/gettingFromDb.js";
 
-const graphQLResolver = {
+export const graphQLResolver = {
   Query: {
     /**
      * @function getting all trending movies and shows
@@ -248,4 +279,4 @@ const graphQLResolver = {
   },
 };
 
-module.exports = { graphQLResolver };
+// module.exports = { graphQLResolver };

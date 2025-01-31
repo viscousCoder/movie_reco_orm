@@ -59,18 +59,31 @@
 // // SQLDATABASE=movieorm
 // // SQLPASSWORD=Aman2001
 
-require("reflect-metadata");
-const express = require("express");
-const bodyParser = require("body-parser");
-require("dotenv").config();
-const cors = require("cors");
-const { ApolloServer } = require("@apollo/server");
-const { expressMiddleware } = require("@apollo/server/express4");
-const { graphQLSchema } = require("./schema/graphQLSchema.js");
-const { graphQLResolver } = require("./resolver/graphQLResolver.js");
-const typeorm = require("typeorm");
-const path = require("path");
-const { dataSource } = require("./database/database.js");
+// require("reflect-metadata");
+// const express = require("express");
+// const bodyParser = require("body-parser");
+// require("dotenv").config();
+// const cors = require("cors");
+// const { ApolloServer } = require("@apollo/server");
+// const { expressMiddleware } = require("@apollo/server/express4");
+// const { graphQLSchema } = require("./schema/graphQLSchema.js");
+// const { graphQLResolver } = require("./resolver/graphQLResolver.js");
+// const typeorm = require("typeorm");
+// const path = require("path");
+// const { dataSource } = require("./database/database.js");
+import "reflect-metadata";
+import express from "express";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import cors from "cors";
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+import { graphQLSchema } from "./schema/graphQLSchema.js";
+import { graphQLResolver } from "./resolver/graphQLResolver.js";
+// import { DataSource } from "./database/database.js";
+import { dataSource } from "./database/database.js";
+
+dotenv.config();
 
 const PORT = process.env.CUSTOMHOSTEDPORT || 6999;
 

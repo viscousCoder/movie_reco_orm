@@ -1,6 +1,11 @@
-const axios = require("axios");
-const { httpHelperFunction } = require("../httpHelper/httpHelperFunction");
-require("dotenv").config();
+// const axios = require("axios");
+// const { httpHelperFunction } = require("../httpHelper/httpHelperFunction");
+// require("dotenv").config();
+import axios from "axios";
+import dotenv from "dotenv";
+import { httpHelperFunction } from "../httpHelper/httpHelperFunction.js";
+
+dotenv.config();
 
 const apikey = process.env.API_KEY;
 
@@ -8,7 +13,7 @@ const apikey = process.env.API_KEY;
  * @function to get the trending movie or shows
  * @returns array of objects of trending movies and shows
  */
-const trendingMoviesShows = async () => {
+export const trendingMoviesShows = async () => {
   try {
     const extendUri = `/trending/all/day?api_key=${apikey}`;
     const response = await httpHelperFunction(extendUri);
@@ -22,7 +27,7 @@ const trendingMoviesShows = async () => {
  * @function to get the trending movie
  * @returns array of object of trending movie
  */
-const trendingMovies = async () => {
+export const trendingMovies = async () => {
   try {
     const extendUri = `/trending/movie/day?api_key=${apikey}`;
     const response = await httpHelperFunction(extendUri);
@@ -36,7 +41,7 @@ const trendingMovies = async () => {
  * @function to get the trending tv shows
  * @returns array of object of trending tv shows
  */
-const tredingTvShows = async () => {
+export const tredingTvShows = async () => {
   try {
     const extendUri = `/trending/tv/day?api_key=${apikey}`;
     const response = await httpHelperFunction(extendUri);
@@ -50,7 +55,7 @@ const tredingTvShows = async () => {
  * @function to get the  trending, movies, tv shows details
  * @returns object of trending, movie, tv shows details
  */
-const getMovieShowDetails = async (type, id) => {
+export const getMovieShowDetails = async (type, id) => {
   try {
     const extendUri = `/${type}/${id}?api_key=${apikey}&language=en-US`;
     const response = await httpHelperFunction(extendUri);
@@ -64,7 +69,7 @@ const getMovieShowDetails = async (type, id) => {
  * @function to get the credit details
  * @returns object that conatin id and array of object related to crew and another array of object related to cast
  */
-const getCreditDetails = async (type, id) => {
+export const getCreditDetails = async (type, id) => {
   try {
     const extendUri = `/${type}/${id}/credits?api_key=${apikey}&language=en-US`;
     const response = await httpHelperFunction(extendUri);
@@ -79,7 +84,7 @@ const getCreditDetails = async (type, id) => {
  * @param {Number} id of the selected movie
  * @returns array of object of recommended movie
  */
-const getRecommendedMovieData = async (id) => {
+export const getRecommendedMovieData = async (id) => {
   try {
     const extendUri = `/movie/${id}/recommendations?api_key=${apikey}&language=en-US&page=1`;
     const response = await httpHelperFunction(extendUri);
@@ -94,7 +99,7 @@ const getRecommendedMovieData = async (id) => {
  * @param {Number} id of the selected movie
  * @returns array of object of similar movie
  */
-const getSimilarMovieData = async (id) => {
+export const getSimilarMovieData = async (id) => {
   try {
     const extendUri = `/movie/${id}/similar?api_key=${apikey}&language=en-US&page=1`;
     const response = await httpHelperFunction(extendUri);
@@ -109,7 +114,7 @@ const getSimilarMovieData = async (id) => {
  * @param {Number} id of the selected tv shows
  * @returns array of object of recommended tv shows
  */
-const getRecommendedTvData = async (id) => {
+export const getRecommendedTvData = async (id) => {
   try {
     const extendUri = `/tv/${id}/recommendations?api_key=${apikey}&language=en-US&page=1`;
     const response = await httpHelperFunction(extendUri);
@@ -124,7 +129,7 @@ const getRecommendedTvData = async (id) => {
  * @param {Number} id of the selected tv shows
  * @returns array of object of similar tv shows
  */
-const getSimilarTvData = async (id) => {
+export const getSimilarTvData = async (id) => {
   try {
     const extendUri = `/tv/${id}/similar?api_key=${apikey}&language=en-US&page=1`;
     const response = await httpHelperFunction(extendUri);
@@ -140,7 +145,7 @@ const getSimilarTvData = async (id) => {
  * @param {Number} id of the selected movie or tv shows
  * @returns array of object of reviews
  */
-const getReviewData = async (type, id) => {
+export const getReviewData = async (type, id) => {
   try {
     const extendUri = `/${type}/${id}/reviews?api_key=${apikey}&language=en-US&page=1`;
     const response = await httpHelperFunction(extendUri);
@@ -154,7 +159,7 @@ const getReviewData = async (type, id) => {
  * @function to get the trending movie or shows
  * @returns array of objects of trending movies and shows
  */
-const getSearchbarData = async (query) => {
+export const getSearchbarData = async (query) => {
   try {
     const extendUri = `/search/movie?api_key=${apikey}&query=${query}&include_adult=false&language=en-US&page=1`;
 
@@ -165,16 +170,16 @@ const getSearchbarData = async (query) => {
   }
 };
 
-module.exports = {
-  trendingMoviesShows,
-  trendingMovies,
-  tredingTvShows,
-  getMovieShowDetails,
-  getCreditDetails,
-  getRecommendedMovieData,
-  getSimilarMovieData,
-  getRecommendedTvData,
-  getSimilarTvData,
-  getReviewData,
-  getSearchbarData,
-};
+// module.exports = {
+//   trendingMoviesShows,
+//   trendingMovies,
+//   tredingTvShows,
+//   getMovieShowDetails,
+//   getCreditDetails,
+//   getRecommendedMovieData,
+//   getSimilarMovieData,
+//   getRecommendedTvData,
+//   getSimilarTvData,
+//   getReviewData,
+//   getSearchbarData,
+// };

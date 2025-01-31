@@ -8,7 +8,7 @@
     "start": "node index.js",
     "build": "npm install"
   },
-  "type": "commonjs",
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

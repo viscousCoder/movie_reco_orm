@@ -1,19 +1,23 @@
-const { pool, dataSource } = require("../database/database");
-const Alltrending = require("../entity/Alltrending");
-const Details = require("../entity/Details");
-const CompanyDetails = require("../entity/CompanyDetails");
-const Genre = require("../entity/Genre");
-const Language = require("../entity/Language");
-const Review = require("../entity/Review");
-const Credit = require("../entity/Credit");
-const Cast = require("../entity/Cast");
-const Crew = require("../entity/Crew");
+// const { pool, dataSource } = require("../database/database");
+// const Alltrending = require("../entity/Alltrending");
+// const Details = require("../entity/Details");5
+// const Review = require("../entity/Review");
+// const Credit = require("../entity/Credit");
+// const Cast = require("../entity/Cast");
+// const Crew = require("../entity/Crew");
+import { dataSource } from "../database/database.js";
+import Alltrending from "../entity/Alltrending.js";
+import Details from "../entity/Details.js";
+import Review from "../entity/Review.js";
+import Credit from "../entity/Credit.js";
+import Cast from "../entity/Cast.js";
+import Crew from "../entity/Crew.js";
 
 /**
  * @function to get the movie or tv shows or trending list of data from the db
  * @returns the array of object containing
  */
-const fetchAllTrendingData = async () => {
+export const fetchAllTrendingData = async () => {
   try {
     const trendingRepo = dataSource.getRepository(Alltrending);
     const result = await trendingRepo.find();
@@ -29,9 +33,8 @@ const fetchAllTrendingData = async () => {
  * @returns object that conatins details
  */
 
-const fetchDetailsData = async (id) => {
+export const fetchDetailsData = async (id) => {
   try {
-    // Fetch the Details record by ID, including related production companies, genres, and spoken languages
     const details = await dataSource.getRepository(Details).findOne({
       where: { id: id },
       relations: ["production_companies", "genres", "spoken_languages"],
@@ -42,7 +45,6 @@ const fetchDetailsData = async (id) => {
     }
 
     console.log("Here is result", details);
-    // Return the fetched details with associated entities
     return details;
   } catch (err) {
     console.error("Error fetching data:", err);
@@ -56,11 +58,10 @@ const fetchDetailsData = async (id) => {
  * @returns array of the review list
  */
 
-const getReviews = async (id) => {
+export const getReviews = async (id) => {
   const reviewRepo = dataSource.getRepository(Review);
   console.log("review Result", id);
   try {
-    // Fetch reviews based on reference_id
     const reviews = await reviewRepo.find({
       where: { reference_id: id },
       select: [
@@ -75,7 +76,6 @@ const getReviews = async (id) => {
       ],
     });
 
-    // Transform reviews into the desired format
     const result = reviews.map((review) => ({
       author_details: {
         name: review.author_name,
@@ -100,13 +100,12 @@ const getReviews = async (id) => {
  * @returns object that contained id and array of object for cast and crew
  */
 
-const getCreditData = async (creditId) => {
+export const getCreditData = async (creditId) => {
   const creditRepository = dataSource.getRepository(Credit);
   const castRepository = dataSource.getRepository(Cast);
   const crewRepository = dataSource.getRepository(Crew);
 
   try {
-    // Fetch credit entry
     const credit = await creditRepository.findOne({
       where: { credit_id: creditId },
     });
@@ -115,13 +114,11 @@ const getCreditData = async (creditId) => {
       throw new Error("Credit not found");
     }
 
-    // Fetch related crew members
     const crew = await crewRepository.find({
       where: { credit: credit.id },
       select: ["crew_id", "name", "profile_path", "job"],
     });
 
-    // Fetch related cast members
     const cast = await castRepository.find({
       where: { credit: credit.id },
       select: ["cast_id", "name", "profile_path", "character"],
@@ -148,10 +145,10 @@ const getCreditData = async (creditId) => {
   }
 };
 
-module.exports = {
-  fetchAllTrendingData,
-  fetchDetailsData,
-  getReviews,
-  // getCredits,
-  getCreditData,
-};
+// module.exports = {
+//   fetchAllTrendingData,
+//   fetchDetailsData,
+//   getReviews,
+//   // getCredits,
+//   getCreditData,
+// };

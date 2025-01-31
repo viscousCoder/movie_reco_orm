@@ -1,8 +1,9 @@
-const EntitySchema = require("typeorm").EntitySchema;
+// const EntitySchema = require("typeorm").EntitySchema;
+import { EntitySchema } from "typeorm";
 
-module.exports = new EntitySchema({
-  name: "AllTrending", // Will use table name `category` as default behaviour.
-  tableName: "alltrendinggs", // Optional: Provide `tableName` property to override the default behaviour for table name.
+export default new EntitySchema({
+  name: "AllTrending",
+  tableName: "alltrendinggs",
   columns: {
     id: {
       primary: true,
