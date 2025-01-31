@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import { Box, IconButton } from "@mui/material";
 import ArrowBackIos from "@mui/icons-material/ArrowBackIos";
@@ -7,40 +6,46 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // Custom Next Arrow
-const NextArrow = ({ onClick }) => (
-  <IconButton
-    onClick={onClick}
-    sx={{
-      position: "absolute",
-      top: "50%",
-      right: "  10px",
-      transform: "translateY(-50%)",
-      zIndex: 1,
-      backgroundColor: "rgba(255, 255, 255, 0.8)",
-      "&:hover": { backgroundColor: "rgba(255, 255, 255, 1)" },
-    }}
-  >
-    <ArrowForwardIos fontSize="small" />
-  </IconButton>
-);
+const NextArrow: React.FC<any> = (props) => {
+  const { onClick } = props;
+  return (
+    <IconButton
+      onClick={onClick}
+      sx={{
+        position: "absolute",
+        top: "50%",
+        right: "  10px",
+        transform: "translateY(-50%)",
+        zIndex: 1,
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        "&:hover": { backgroundColor: "rgba(255, 255, 255, 1)" },
+      }}
+    >
+      <ArrowForwardIos fontSize="small" />
+    </IconButton>
+  );
+};
 
 // Custom Previous Arrow
-const PrevArrow = ({ onClick }) => (
-  <IconButton
-    onClick={onClick}
-    sx={{
-      position: "absolute",
-      top: "50%",
-      left: "10px",
-      transform: "translateY(-50%)",
-      zIndex: 1,
-      backgroundColor: "rgba(255, 255, 255, 0.8)",
-      "&:hover": { backgroundColor: "rgba(255, 255, 255, 1)" },
-    }}
-  >
-    <ArrowBackIos fontSize="small" />
-  </IconButton>
-);
+const PrevArrow: React.FC<any> = (props) => {
+  const { onClick } = props;
+  return (
+    <IconButton
+      onClick={onClick}
+      sx={{
+        position: "absolute",
+        top: "50%",
+        left: "10px",
+        transform: "translateY(-50%)",
+        zIndex: 1,
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        "&:hover": { backgroundColor: "rgba(255, 255, 255, 1)" },
+      }}
+    >
+      <ArrowBackIos fontSize="small" />
+    </IconButton>
+  );
+};
 
 /**
  *

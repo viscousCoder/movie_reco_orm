@@ -5,6 +5,7 @@ import ArrowBackIos from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
 
 interface CastMember {
+  job: string;
   id: number;
   name: string;
   character: string;
@@ -141,7 +142,7 @@ const CastCrewAvtar: React.FC<CastSliderProps> = ({ cast, title }) => {
                   {member.name || "Side Role"}
                 </Typography>
                 <Typography variant="caption" fontWeight="bold" color="#cbc6c6">
-                  {member.character || member.job}
+                  {member.character || member.job || "NA"}
                 </Typography>
               </Box>
             ))}

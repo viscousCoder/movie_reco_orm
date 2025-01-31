@@ -1,11 +1,15 @@
 import React from "react";
 import { Avatar, Box, Grid, Typography, Card } from "@mui/material";
+import { MovieDetails } from "./DetailPage";
 
 /**
  * @component to show the company names
  * @returns show comapny name and some details
  */
-const CompanyProduction: React.FC = ({ data }) => {
+interface CompanyProductionProps {
+  data: MovieDetails; // `data` is the movie details object
+}
+const CompanyProduction: React.FC<CompanyProductionProps> = ({ data }) => {
   const companies = data?.production_companies || [];
 
   return (

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Header from "./Header/Header.tsx";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../pages/Footer.tsx";

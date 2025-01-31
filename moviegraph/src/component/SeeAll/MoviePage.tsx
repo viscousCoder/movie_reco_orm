@@ -4,13 +4,14 @@ import Filters from "./Filters.tsx";
 import MovieCard from "./MovieCard.tsx";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_TRENDING } from "../../graphql/queries.tsx";
+import { AllTrending } from "../DataList/DataList.tsx";
 
 /**
  *
  * @returns show the movies list and filter
  */
 const MoviesPage: React.FC = () => {
-  const { data: movie, loading: allLoading } = useQuery(GET_ALL_TRENDING);
+  const { data: movie } = useQuery(GET_ALL_TRENDING);
   const movies = movie?.getAllTrending;
   return (
     <Box
@@ -71,7 +72,7 @@ const MoviesPage: React.FC = () => {
         <Divider sx={{ my: 2 }} />
 
         <Grid container spacing={2}>
-          {movies?.map((movie) => (
+          {movies?.map((movie: AllTrending) => (
             <Grid
               item
               xs={12}

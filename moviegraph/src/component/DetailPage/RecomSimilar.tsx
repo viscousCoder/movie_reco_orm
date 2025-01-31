@@ -51,7 +51,7 @@ const RecomSimilar = () => {
     }
   );
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     setTabValue(newValue);
     setLoading(true);
 

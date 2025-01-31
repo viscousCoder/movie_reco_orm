@@ -11,18 +11,19 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { AllTrending } from "../DataList/DataList";
 
-interface Movie {
-  id: number;
-  title: string;
-  likes: string;
-  promoted: boolean;
-  rating: string;
-  poster: string;
-}
+// interface Movie {
+//   id: number;
+//   title: string;
+//   likes: string;
+//   promoted: boolean;
+//   rating: string;
+//   poster: string;
+// }
 
 interface MovieCardProps {
-  movie: Movie;
+  movie: AllTrending;
 }
 
 /**
@@ -33,9 +34,9 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const navigate = useNavigate();
 
-  const handleNavigate = (movie) => {
-    localStorage.setItem("media_type", movie.media_type);
-    navigate(`/${movie.id}`);
+  const handleNavigate = (movie: AllTrending) => {
+    localStorage.setItem("media_type", movie.media_type || "movie");
+    navigate(`/${movie?.id}`);
   };
   return (
     <Card

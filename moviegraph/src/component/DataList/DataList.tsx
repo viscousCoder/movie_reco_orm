@@ -18,7 +18,28 @@ import { useNavigate } from "react-router-dom";
  * @param {Array} data - list of movies and tv shows
  * @returns list of all movies or shows in card format
  */
-const DataList = ({ data }) => {
+export interface AllTrending {
+  backdrop_path: string | null;
+  first_air_date: string | null;
+  id: string;
+  media_type: "movie" | "tv" | string;
+  name: string | null;
+  popularity: string;
+  poster_path: string;
+  profile_path: string;
+  release_date: string;
+  title: string;
+  vote_average: number;
+  vote_count: number;
+  __typename: "AllTrending";
+}
+
+// const DataList = ({ data }) => {
+export interface DataListProps {
+  data: AllTrending[];
+}
+
+const DataList: React.FC<DataListProps> = ({ data }) => {
   const naviagte = useNavigate();
 
   /**
@@ -26,9 +47,9 @@ const DataList = ({ data }) => {
    * @param {string} userId - taking userId as a parameter
    * @returns {userMediaPath} -  user mediaPath based on userId
    */
-  const handleShow = (item) => {
+  const handleShow = (item: AllTrending) => {
     localStorage.setItem("media_type", item.media_type || "movie");
-    naviagte(`/${item.id}`);
+    naviagte(`/${item!.id}`);
   };
 
   /**
@@ -37,7 +58,7 @@ const DataList = ({ data }) => {
    * @used to set the media_type and naviagte
    * @returns naviagte the user to the details page
    */
-  const handlePeople = (item) => {
+  const handlePeople = (item: AllTrending) => {
     console.log("hii");
     naviagte(`/people/${item}`);
   };
@@ -47,7 +68,7 @@ const DataList = ({ data }) => {
   return (
     <Container sx={{ maxWidth: "1500px !important" }}>
       <Grid2
-        container
+        // container
         spacing={2}
         display={"flex"}
         justifyContent={"center"}
@@ -68,13 +89,11 @@ const DataList = ({ data }) => {
         {data?.map((item) => (
           <Grid2
             key={item.id}
-            xs={12}
-            sm={6}
-            md={4}
-            lg={4}
+            size={{ xs: 12, sm: 6, md: 4 }}
             onClick={
               item.id ? () => handleShow(item) : () => handlePeople(item)
             }
+            component="div"
           >
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
@@ -84,7 +103,7 @@ const DataList = ({ data }) => {
                   image={`http://image.tmdb.org/t/p/w500${
                     item.backdrop_path || item.profile_path || noneImage
                   }`}
-                  alt={item.title || item.name}
+                  alt={item.title || item.name || "One image"}
                 />
               </CardActionArea>
               <CardActions sx={{ background: "black" }}>
